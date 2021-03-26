@@ -55,3 +55,25 @@ doubleMoney.onclick = function() {
 }
 
 // showOnlyMillonaires function
+
+
+// calculateWealth function
+calculateWealth.onclick = function() {
+  // suma
+  let totalWealth = 0;
+  for (let i = 0; i < wealth.length; i++) {
+    totalWealth += wealth[i];
+    console.log(totalWealth);
+  }
+  // add to the table
+  let tr = document.createElement('tr');
+  let txt = document.createElement('td');
+  let totalMoney = document.createElement('td');
+  // content
+  txt.innerHTML = 'Dinero total:';
+  totalMoney.innerHTML = totalWealth;
+  tr.appendChild(txt);
+  tr.appendChild(totalMoney);
+  tr.setAttribute('id', 'totalMoneyEntry');
+  usersTable.appendChild(tr);
+}
