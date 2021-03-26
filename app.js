@@ -10,8 +10,8 @@ const
   usersTable = document.querySelector('#usersTable')
   ;
 
-var users = ['Maksi Allgig'];
-var wealth = [300000];
+var users = [];
+var wealth = [];
 
 // addUser function
 addUser.onclick = function() {
@@ -20,7 +20,7 @@ addUser.onclick = function() {
   // add user
   let generatedName = names[Math.floor(Math.random() * names.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)];
   users.push(generatedName);
-  wealth.push(Math.floor(Math.random() * 999999));
+  wealth.push(Math.floor(Math.random() * 999));
   // add user to dom
   let tr = document.createElement('tr');
   let userName = document.createElement('td');
@@ -28,6 +28,8 @@ addUser.onclick = function() {
   // add text to elements
   userName.innerHTML = generatedName;
   userWealth.innerHTML = wealth[wealth.length - 1];
+  // some configs
+  userWealth.setAttribute('id', 'usersWealth');
   // add elements to html
   tr.appendChild(userName);
   tr.appendChild(userWealth);
@@ -37,4 +39,19 @@ addUser.onclick = function() {
 }
 
 // doubleMoney function
-doubleMoney
+doubleMoney.onclick = function() {
+  console.log(wealth);
+  userWealthTable = document.querySelectorAll('#usersWealth');
+  for (let i = 0; i<wealth.length; i++) {
+    wealth[i] = wealth[i] * 2;
+    //console.log(userWealthTable[i]);
+    // userWealthTable[i].innerHTML = wealth[i];
+  }
+  for (let i = 0; i<userWealthTable.length; i++) {
+    // console.log(userWealthTable[i]);
+    userWealthTable[i].innerHTML = wealth[i];
+  }
+  console.log(`nuevo dinero: ${wealth}`);
+}
+
+// showOnlyMillonaires function
