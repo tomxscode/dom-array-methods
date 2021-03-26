@@ -15,6 +15,13 @@ var wealth = [];
 
 // addUser function
 addUser.onclick = function() {
+  // check if exist a totalMoneyEntry
+  // let totalMoneyEntry = document.querySelectorAll('#totalMoneyEntry');
+  // for (let i = 0; i < totalMoneyEntry; i++) {
+  //   usersTable.removeChild(totalMoneyEntry[i]);
+  //   console.log(usersTable);
+  // }
+
   let names = ['John', 'Steven', 'Thomas', 'Elon'];
   let lastNames = ['Doe', 'Universe', 'Edinson', 'Musk'];
   // add user
