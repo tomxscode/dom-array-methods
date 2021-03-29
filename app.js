@@ -13,6 +13,23 @@ const
 var users = [];
 var wealth = [];
 
+// addUserToHTML
+function addUserToHTML(name, money) {
+  let tr = document.createElement('tr');
+  let userName = document.createElement('td');
+  let userWealth = document.createElement('td');
+  // add text to elements
+  userName.innerHTML = name;
+  userWealth.innerHTML = money;
+  // some configs
+  tr.setAttribute('id', 'millonariesEntry');
+  userWealth.setAttribute('id', 'usersWealth');
+  // add elements to html
+  tr.appendChild(userName);
+  tr.appendChild(userWealth);
+  usersTable.appendChild(tr);
+}
+
 // addUser function
 addUser.onclick = function() {
   // check if exist a totalMoneyEntry
@@ -29,18 +46,7 @@ addUser.onclick = function() {
   users.push(generatedName);
   wealth.push(Math.floor(Math.random() * 999));
   // add user to dom
-  let tr = document.createElement('tr');
-  let userName = document.createElement('td');
-  let userWealth = document.createElement('td');
-  // add text to elements
-  userName.innerHTML = generatedName;
-  userWealth.innerHTML = wealth[wealth.length - 1];
-  // some configs
-  userWealth.setAttribute('id', 'usersWealth');
-  // add elements to html
-  tr.appendChild(userName);
-  tr.appendChild(userWealth);
-  usersTable.appendChild(tr);
+  addUserToHTML(generatedName, wealth[wealth.length-1]);
 
   console.info(users, wealth);
 }
@@ -63,6 +69,20 @@ doubleMoney.onclick = function() {
 
 // showOnlyMillonaires function
 
+// sortByRichest function
+sortByRichest.onclick = function() {
+  wealth.sort(function(a,b) {return b-a});
+  console.log(wealth);
+  let millonariesEntry = document.querySelectorAll('#millonariesEntry');
+  for (let i = 0; i<wealth.length; i++) {
+    // eliminado todas las entradas
+    millonariesEntry[i].remove();
+  }
+  for (let i=0; i<users.length; i++) {
+    // agregando de nuevo la data
+    addUserToHTML(users[i], wealth[i]);
+  }
+}
 
 // calculateWealth function
 calculateWealth.onclick = function() {
