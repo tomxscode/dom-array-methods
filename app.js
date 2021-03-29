@@ -30,6 +30,15 @@ function addUserToHTML(name, money) {
   usersTable.appendChild(tr);
 }
 
+// borrando
+function removeEntrys() {
+  let millonariesEntry = document.querySelectorAll('#millonariesEntry');
+  for (let i = 0; i<wealth.length; i++) {
+    // eliminado todas las entradas
+    millonariesEntry[i].remove();
+  }
+}
+
 // addUser function
 addUser.onclick = function() {
   // check if exist a totalMoneyEntry
@@ -44,7 +53,7 @@ addUser.onclick = function() {
   // add user
   let generatedName = names[Math.floor(Math.random() * names.length)] + ' ' + lastNames[Math.floor(Math.random() * lastNames.length)];
   users.push(generatedName);
-  wealth.push(Math.floor(Math.random() * 999));
+  wealth.push(Math.floor(Math.random() * 1500));
   // add user to dom
   addUserToHTML(generatedName, wealth[wealth.length-1]);
 
@@ -68,16 +77,20 @@ doubleMoney.onclick = function() {
 }
 
 // showOnlyMillonaires function
+showMillonaires.onclick = function() {
+  removeEntrys();
+  for (let i = 0; i<wealth.length; i++) {
+    if (wealth[i] > 1000) {
+      addUserToHTML(users[i], wealth[i]);
+    }
+  }
+}
 
 // sortByRichest function
 sortByRichest.onclick = function() {
   wealth.sort(function(a,b) {return b-a});
   console.log(wealth);
-  let millonariesEntry = document.querySelectorAll('#millonariesEntry');
-  for (let i = 0; i<wealth.length; i++) {
-    // eliminado todas las entradas
-    millonariesEntry[i].remove();
-  }
+  removeEntrys();
   for (let i=0; i<users.length; i++) {
     // agregando de nuevo la data
     addUserToHTML(users[i], wealth[i]);
