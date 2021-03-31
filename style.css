@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #1D4D9F;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 16px;
+  font-size: 12pt;
+  background-color: #F08838;
+  border: none;
+  color: white;
+  font-weight: 600;
+}
